@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveMaster - Assessoria CNH 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A192F; --accent: #FFD700; --accent-dark: #C5A000; --white: #ffffff; --text: #1e272e; --success: #27ae60; --danger: #e74c3c; --border-color: #e1e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        .hidden { display: none !important; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 25px; }
+        
+        .top-bar { background: var(--danger); color: white; text-align: center; padding: 10px; font-weight: bold; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        header { background: var(--primary); padding: 20px 0; color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .navbar { display: flex; justify-content: flex-start; align-items: center; }
+        .logo { font-size: 26px; font-family: 'Montserrat'; font-weight: 800; cursor: pointer; color: white; }
+        .logo span { color: var(--accent); }
+
+        .hero { 
+            min-height: 75vh; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070') center/cover; 
+            color: white; text-align: center; padding: 40px 20px;
+        }
+        .hero h1 { font-family: 'Montserrat'; font-size: clamp(32px, 6vw, 56px); text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+        .hero p { font-size: clamp(16px, 2vw, 22px); max-width: 800px; margin: 0 auto 35px; opacity: 0.9; }
+
+        .btn { padding: 18px 35px; border-radius: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; border: none; transition: 0.3s; display: inline-block; font-size: 15px; text-decoration: none; }
+        .btn-primary { background: var(--accent); color: var(--primary); box-shadow: 0 4px 15px rgba(255,215,0,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); background: var(--white); }
+        
+        .btn-back { background: none; border: none; color: var(--primary); font-weight: 700; cursor: pointer; margin-bottom: 30px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { border: 1px solid var(--border-color); padding: 40px 30px; background: white; border-radius: 16px; display: flex; flex-direction: column; transition: 0.4s; position: relative; }
+        .card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .card h3 { font-family: 'Montserrat'; font-size: 24px; margin-bottom: 10px; color: var(--primary); }
+        .price-tag { margin: 20px 0; padding: 20px; background: #f8f9fb; border-radius: 12px; }
+        .price-pix { color: var(--success); font-size: 36px; font-weight: 800; display: block; margin-top: 5px; }
+        .pix-label { background: var(--success); color: white; font-size: 11px; padding: 4px 12px; border-radius: 50px; text-transform: uppercase; font-weight: 800; display: inline-block; }
+
+        .list-info { list-style: none; font-size: 15px; line-height: 2; margin-bottom: 25px; text-align: left; }
+        .list-info li { margin-bottom: 8px; color: #444; }
+        .bonus-tag { color: var(--success); font-weight: 700; border-top: 1px dashed #ddd; padding-top: 15px; margin-top: 10px; font-size: 13px; }
+
+        .modal { position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+        .modal-content { background: white; padding: 50px 40px; border-radius: 20px; max-width: 450px; width: 100%; text-align: center; position: relative; }
+        .close { position: absolute; top: 20px; right: 25px; font-size: 32px; cursor: pointer; color: #bbb; }
+
+        footer { background: #050b16; color: white; padding: 40px 0; text-align: center; font-size: 14px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">🚨 CNH ATUALIZADA COM O NOVO MODELO DE 2026 - ÚLTIMAS VAGAS COM DESCONTO</div>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo" onclick="showPage('home')">DRIVE<span>MASTER</span></div>
+        </div>
+    </header>
+
+    <main id="home" class="page-section">
+        <section class="hero">
+            <div class="container">
+                <h1>Emissão de CNH Modelo 2026</h1>
+                <p>Aprovação garantida e emissão acelerada sem burocracia. Conquiste sua habilitação com o suporte líder do Brasil.</p>
+                <button class="btn btn-primary" onclick="showPage('pacotes')">Quero minha CNH agora</button>
+            </div>
+        </section>
+    </main>
+
+    <main id="pacotes" class="page-section hidden">
+        <div class="container" style="padding: 60px 0;">
+            <button class="btn-back" onclick="showPage('home')">← Voltar ao início</button>
+            <h2 style="text-align: center; font-family: 'Montserrat'; font-size: 32px; margin-bottom: 10px;">Planos CNH Na Hora</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <span style="font-weight: 800; color: #cd7f32; font-size: 12px; text-transform: uppercase;">Bronze</span>
+                    <h3>Estreante</h3>
+                    <div class="price-tag">
+                        <span style="font-size: 14px; color: #777;">Cartão: R$ 749,97</span><br>
+                        <span class="pix-label">Oferta no PIX</span>
+                        <span class="price-pix">R$ 499,97</span>
+                    </div>
+                    <ul class="list-info">
+                        <li>✅ 2 Aulas de 1 hora cada</li>
+                        <li>✅ Prova Prática + Teórica</li>
+                        <li>🚀 <strong>CNH em até 30 dias</strong></li>
+                    </ul>
+                    <div class="bonus-tag">🎁 BÔNUS: App de Simulados Grátis</div>
+                    <button class="btn btn-primary" onclick="openPayment('pacote1')" style="margin-top: 20px;">Garantir este plano</button>
+                </div>
+
+                <div class="card" style="border: 2px solid var(--accent); transform: scale(1.05);">
+                    <span style="font-weight: 800; color: var(--accent-dark); font-size: 12px; text-transform: uppercase;">Prata</span>
+                    <h3>Intermediário</h3>
+                    <div class="price-tag">
+                        <span style="font-size: 14px; color: #777;">2x de R$ 499,97</span><br>
+                        <span class="pix-label">Oferta no PIX</span>
+                        <span class="price-pix">R$ 749,97</span>
+                    </div>
+                    <ul class="list-info">
+                        <li>✅ 4 Aulas de 1 hora</li>
+                        <li>✅ Prova Prática + Teórica</li>
+                        <li>🚀 <strong>CNH em até 30 dias</strong></li>
+                    </ul>
+                    <div class="bonus-tag">🎁 BÔNUS: Taxas de Emissão Inclusas</div>
+                    <button class="btn btn-primary" onclick="openPayment('pacote2')" style="margin-top: 20px;">Garantir este plano</button>
+                </div>
+
+                <div class="card">
+                    <span style="font-weight: 800; color: #d4af37; font-size: 12px; text-transform: uppercase;">Ouro</span>
+                    <h3>Acelerado</h3>
+                    <div class="price-tag">
+                        <span style="font-size: 14px; color: #777;">2x de R$ 749,97</span><br>
+                        <span class="pix-label">Oferta no PIX</span>
+                        <span class="price-pix">R$ 999,97</span>
+                    </div>
+                    <ul class="list-info">
+                        <li>✅ 6 Aulas de 1 hora</li>
+                        <li>🚀 <strong>CNH em até 24 horas</strong></li>
+                    </ul>
+                    <div class="bonus-tag">🎁 BÔNUS: Entrega Domiciliar Grátis</div>
+                    <button class="btn btn-primary" onclick="openPayment('pacote3')" style="margin-top: 20px;">Garantir este plano</button>
+                </div>
+
+                <div class="card">
+                    <span style="font-weight: 800; color: var(--primary); font-size: 12px; text-transform: uppercase;">Platinum</span>
+                    <h3>VIP Premium</h3>
+                    <div class="price-tag">
+                        <span style="font-size: 14px; color: #777;">3x de R$ 666,63</span><br>
+                        <span class="pix-label">Oferta no PIX</span>
+                        <span class="price-pix">R$ 1.399,97</span>
+                    </div>
+                    <ul class="list-info">
+                        <li>✅ Direito a 10 Aulas</li>
+                        <li>🚀 <strong>CNH emissão na hora</strong></li>
+                    </ul>
+                    <div class="bonus-tag">🎁 BÔNUS: Isenção Total de Taxas</div>
+                    <button class="btn btn-primary" onclick="openPayment('pacote4')" style="margin-top: 20px;">Garantir este plano</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 style="font-family: 'Montserrat'; font-size: 24px;">Finalizar Adesão</h3>
+            <p style="margin: 20px 0; font-size: 16px; color: #666;">Escolha o método de pagamento:</p>
+            <button class="btn btn-primary" style="background: var(--success); color: white; width: 100%; margin-bottom: 15px;" onclick="handlePayment()">Pagar com PIX</button>
+            <button class="btn btn-primary" style="background: var(--primary); color: white; width: 100%;" onclick="handlePayment()">Pagar no Cartão de Crédito</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>DriveMaster Brasil © 2025 - Assessoria CNH Especializada</p>
+    </footer>
+
+    <script>
+        let currentPackage = "";
+        
+        // SISTEMA DE RODÍZIO DE LINKS (PACOTE 1)
+        const bronzeLinks = [
+            "https://pay.herospark.com/pacote-bronze-492340",
+            "https://pay.herospark.com/remodelagem-completa-de-pagina-492109",
+            "https://pay.herospark.com/pacote-nova-era-492347"
+        ];
+
+        function showPage(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function openPayment(pkg) {
+            currentPackage = pkg;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function handlePayment() {
+            if (currentPackage === 'pacote1') {
+                // Lógica de Rodízio usando localStorage
+                let lastIndex = localStorage.getItem('lastLinkIndex');
+                
+                // Se for a primeira vez, começa do zero. Senão, vai para o próximo.
+                let nextIndex = (lastIndex === null) ? 0 : (parseInt(lastIndex) + 1) % bronzeLinks.length;
+                
+                // Salva o novo index para a próxima vez
+                localStorage.setItem('lastLinkIndex', nextIndex);
+                
+                // Redireciona
+                window.location.href = bronzeLinks[nextIndex];
+            } else {
+                alert("Este checkout está sendo configurado. Tente o Pacote Bronze.");
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('paymentModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
