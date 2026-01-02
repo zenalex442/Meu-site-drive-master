@@ -3,265 +3,1323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveMaster - Consultoria Especializada 2026</title>
+    <meta name="description" content="Regularize sua CNH com segurança total. Consultoria técnica privada para processos administrativos, suspensão e emissão documental.">
+    <title>DriveMaster - Consultoria Black 2026</title>
     
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="DriveMaster - Consultoria Especializada CNH 2026">
-    <meta property="og:description" content="Sua habilitação de forma ágil e segura com suporte especializado completo.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=600">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #0A192F; 
+            --primary: #050505; 
+            --secondary: #121212;
             --accent: #FFD700; 
-            --accent-dark: #b89b00;
+            --accent-dark: #C5A000;
             --white: #ffffff; 
-            --text: #1e272e; 
-            --success: #2ecc71; 
-            --danger: #e74c3c;
+            --text-gray: #b0b0b0;
+            --success: #27ae60; 
+            --danger: #ff4d4d; 
+            --border: #222;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
-        .hidden { display: none !important; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* ANIMAÇÃO DO BOTÃO */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--primary); 
+            color: #f0f0f0; 
+            line-height: 1.6; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+
+        /* Barra de Urgência com contador */
+        .top-bar { 
+            background: linear-gradient(90deg, var(--danger) 0%, #ff6b6b 100%);
+            color: white; 
+            text-align: center; 
+            padding: 12px; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            animation: slideDown 0.5s ease-out;
+            box-shadow: 0 2px 10px rgba(255, 77, 77, 0.3);
+        }
+        .countdown { 
+            display: inline-block; 
+            background: rgba(0,0,0,0.3); 
+            padding: 4px 12px; 
+            border-radius: 5px; 
+            margin-left: 10px;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .top-bar { background: var(--danger); color: white; text-align: center; padding: 10px; font-weight: 800; font-size: 13px; letter-spacing: 1px; }
-        
-        header { background: var(--primary); padding: 15px 0; color: white; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
-        .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-family: 'Montserrat'; font-weight: 800; cursor: pointer; }
-        .logo span { color: var(--accent); }
-
-        .hero { 
-            background: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070') center/cover; 
-            min-height: 80vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 40px 20px;
+        /* Header aprimorado */
+        header { 
+            background: rgba(0,0,0,0.98); 
+            padding: 20px 0; 
+            border-bottom: 1px solid var(--border); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
         }
-        .hero h1 { font-family: 'Montserrat'; font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-size: 18px; margin-bottom: 35px; color: #ccd6f6; max-width: 800px; margin-left: auto; margin-right: auto; }
+        header.scrolled { 
+            padding: 15px 0; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .logo { 
+            font-size: 32px; 
+            font-family: 'Montserrat'; 
+            font-weight: 900; 
+            text-align: center; 
+            color: var(--white); 
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .logo span { 
+            color: var(--accent);
+            position: relative;
+        }
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .logo:hover span::after { transform: scaleX(1); }
 
-        .btn { padding: 18px 35px; border-radius: 50px; font-weight: 800; text-transform: uppercase; cursor: pointer; border: none; transition: 0.3s; display: inline-block; text-decoration: none; font-size: 14px; text-align: center; }
-        .btn-primary { background: var(--accent); color: var(--primary); animation: pulse 2s infinite; }
-        .btn-primary:hover { background: var(--accent-dark); transform: scale(1.05); }
+        /* Hero melhorado */
+        .hero-capture { 
+            padding: 100px 20px; 
+            text-align: center; 
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(18,18,18,0.9) 100%),
+                url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070') center/cover; 
+            border-bottom: 4px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-capture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-        .section-padding { padding: 80px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .capture-box {
+            background: rgba(18, 18, 18, 0.97);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 100px rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
         
-        .card { background: white; border-radius: 15px; padding: 40px 30px; position: relative; transition: 0.4s; border: 1px solid #eee; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .hero-badge {
+            color: var(--accent); 
+            font-size: 12px; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
         
-        .card.featured { border: 3px solid var(--accent); transform: scale(1.05); z-index: 2; }
-        .card.featured::before { content: "MAIS ESCOLHIDO"; position: absolute; top: 15px; right: -30px; background: var(--accent); color: var(--primary); padding: 5px 40px; transform: rotate(45deg); font-size: 10px; font-weight: 800; }
+        .hero-title { 
+            font-family: 'Montserrat'; 
+            font-size: clamp(32px, 6vw, 48px); 
+            line-height: 1.2; 
+            margin-bottom: 20px; 
+            color: var(--white);
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle { 
+            color: var(--text-gray); 
+            margin-bottom: 40px; 
+            font-size: 17px;
+            line-height: 1.6;
+        }
 
-        .card h3 { font-family: 'Montserrat'; font-size: 22px; margin-bottom: 20px; color: var(--primary); }
-        .card ul { list-style: none; margin-bottom: 30px; text-align: left; flex-grow: 1; }
-        .card li { margin-bottom: 12px; font-size: 15px; display: flex; align-items: center; }
-        .card li::before { content: '✓'; color: var(--success); font-weight: bold; margin-right: 10px; }
+        .input-group { text-align: left; margin-bottom: 20px; position: relative; }
+        .input-group label { 
+            font-size: 11px; 
+            font-weight: 700; 
+            color: var(--accent); 
+            margin-left: 5px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .capture-input { 
+            width: 100%; 
+            padding: 18px 20px; 
+            border-radius: 15px; 
+            border: 2px solid #222; 
+            background: #080808; 
+            color: white; 
+            font-size: 16px; 
+            margin-top: 8px;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .capture-input:focus { 
+            border-color: var(--accent); 
+            outline: none; 
+            background: #0a0a0a;
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.1);
+        }
 
-        /* MODAIS */
-        .modal { position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
-        .modal-content { background: white; padding: 40px; border-radius: 15px; max-width: 500px; width: 100%; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; }
-        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #999; }
+        .btn-cta { 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #000; 
+            font-weight: 800; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: none; 
+            width: 100%; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 17px; 
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn-cta:hover::before { left: 100%; }
+        .btn-cta:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+        .btn-cta:active { transform: translateY(-1px); }
+
+        /* Trust Bar */
+        .trust-bar { 
+            background: #0a0a0a; 
+            padding: 30px 0; 
+            border-bottom: 1px solid var(--border);
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .trust-icons { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 30px;
+        }
+        .trust-icons img { 
+            height: 32px; 
+            filter: grayscale(100%) opacity(0.4);
+            transition: all 0.3s;
+        }
+        .trust-icons img:hover { 
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.1);
+        }
+
+        /* Seção de Benefícios */
+        .benefits { 
+            padding: 100px 0; 
+            background: linear-gradient(180deg, var(--primary) 0%, #0a0a0a 100%);
+        }
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .benefit-card {
+            background: var(--secondary);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .benefit-card:hover::before { opacity: 1; }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .benefit-desc {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.7;
+        }
         
-        .qr-code-img { width: 200px; height: 200px; margin: 20px auto; display: block; border: 1px solid #eee; padding: 10px; }
-        .copy-box { background: #f8f9fa; padding: 15px; border-radius: 8px; font-size: 10px; border: 1px dashed var(--success); word-break: break-all; margin: 15px 0; color: #333; font-family: monospace; }
+        /* Planos aprimorados */
+        .planos { 
+            padding: 100px 0; 
+            background: var(--primary);
+        }
+        .section-title { 
+            text-align: center; 
+            font-family: 'Montserrat'; 
+            margin-bottom: 70px; 
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .section-title span { 
+            color: var(--accent);
+            position: relative;
+        }
 
-        footer { background: var(--primary); color: white; padding: 60px 0 30px; text-align: center; }
-        .footer-links a { color: #ccd6f6; text-decoration: none; margin: 0 10px; font-size: 12px; cursor: pointer; }
+        .grid-planos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px;
+        }
+        .card-plano { 
+            background: var(--secondary); 
+            padding: 45px 30px; 
+            border-radius: 25px; 
+            border: 2px solid var(--border); 
+            text-align: center; 
+            position: relative; 
+            transition: all 0.4s;
+            display: flex; 
+            flex-direction: column;
+        }
+        .card-plano:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+        
+        .card-plano.popular { 
+            border: 3px solid var(--accent); 
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+            transform: scale(1.05);
+        }
+        .card-plano.popular:hover {
+            transform: translateY(-10px) scale(1.08);
+        }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 34px; } .card.featured { transform: scale(1); } }
+        .card-plano.familia { border: 2px solid var(--success); }
+        .card-plano.familia h3 { color: var(--success); }
+
+        .badge-popular { 
+            background: var(--accent); 
+            color: #000; 
+            font-size: 11px; 
+            font-weight: 800; 
+            padding: 6px 16px; 
+            border-radius: 30px; 
+            position: absolute; 
+            top: -15px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .card-plano h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .price { 
+            font-size: 42px; 
+            font-weight: 900; 
+            color: var(--white); 
+            margin: 25px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .price span { 
+            font-size: 16px; 
+            color: #555; 
+            font-weight: 400; 
+            display: block; 
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        .price small { 
+            font-size: 14px; 
+            color: var(--accent); 
+            display: block; 
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .features-list { 
+            list-style: none; 
+            margin: 30px 0; 
+            text-align: left; 
+            font-size: 15px; 
+            flex-grow: 1;
+        }
+        .features-list li { 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            color: #ccc;
+            padding-left: 5px;
+        }
+        .features-list li::before { 
+            content: '✓'; 
+            color: var(--accent); 
+            margin-right: 12px; 
+            font-weight: bold; 
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .btn-outline { 
+            padding: 18px; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            border: 2px solid var(--accent); 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            width: 100%; 
+            background: transparent; 
+            color: var(--accent); 
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        .btn-outline:hover { 
+            background: var(--accent); 
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 100px 0;
+            background: #080808;
+        }
+        .faq-container {
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+        .faq-item {
+            background: var(--secondary);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+        .faq-question:hover {
+            color: var(--accent);
+        }
+        .faq-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+            color: var(--accent);
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 30px;
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 30px 25px;
+        }
+        
+        /* Depoimentos */
+        .testimonials { 
+            padding: 100px 0; 
+            background: var(--primary);
+        }
+        .testimonial-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 35px;
+            margin-top: 60px;
+        }
+        .testimonial-card { 
+            background: #111; 
+            padding: 35px; 
+            border-radius: 20px; 
+            border: 1px solid #222;
+            transition: all 0.4s;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 80px;
+            color: var(--accent);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+        .testimonial-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .stars { 
+            color: var(--accent); 
+            margin-bottom: 20px; 
+            letter-spacing: 3px;
+            font-size: 18px;
+        }
+        .testimonial-text {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        .client-name { 
+            color: var(--accent); 
+            font-size: 13px; 
+            font-weight: 700; 
+            margin-top: 20px; 
+            display: block; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer { 
+            background: #000; 
+            padding: 80px 0 40px; 
+            text-align: center; 
+            border-top: 1px solid #222;
+        }
+        .footer-legal {
+            max-width: 800px;
+            margin: 20px auto 30px;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .secure-badge { 
+            margin: 30px 0; 
+            opacity: 0.6;
+            max-width: 200px;
+            transition: opacity 0.3s;
+        }
+        .secure-badge:hover { opacity: 1; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0,0,0,0.95); 
+            z-index: 2000;
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-box {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid var(--accent); 
+            border-radius: 25px;
+            width: 90%; 
+            max-width: 500px; 
+            padding: 40px; 
+            text-align: center;
+            position: relative; 
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+        }
+        @keyframes slideUp { 
+            from { transform: translateY(50px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
+        
+        .modal-close { 
+            position: absolute; 
+            top: 20px; 
+            right: 25px; 
+            color: #666; 
+            font-size: 28px; 
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .modal-close:hover { 
+            color: var(--danger);
+            transform: rotate(90deg);
+        }
+        .modal-title { 
+            font-family: 'Montserrat'; 
+            color: white; 
+            margin-bottom: 25px; 
+            font-size: 26px;
+            font-weight: 800;
+        }
+        
+        .modal-btn-wpp { 
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white; 
+            width: 100%; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 15px; 
+            text-decoration: none; 
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .modal-btn-wpp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+        .modal-btn-buy { 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: black; 
+            width: 100%; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .modal-btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .step-content { display: none; }
+        .step-content.active { display: block; }
+        
+        .select-parcela { 
+            width: 100%; 
+            padding: 15px; 
+            background: #000; 
+            color: white; 
+            border: 2px solid #333; 
+            border-radius: 10px; 
+            margin: 20px 0; 
+            font-size: 16px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .select-parcela:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .pix-area { 
+            background: #000; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 2px dashed var(--accent); 
+            margin-top: 20px; 
+            word-break: break-all; 
+            font-family: 'Courier New', monospace;
+            font-size: 12px; 
+            color: #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .btn-copy { 
+            background: var(--accent);
+            color: #000;
+            border: none; 
+            padding: 12px 25px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            margin-top: 15px; 
+            font-size: 13px; 
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .btn-copy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-capture { padding: 60px 20px; min-height: auto; }
+            .capture-box { padding: 35px 25px; }
+            .hero-title { font-size: 28px; }
+            .section-title { font-size: 28px; }
+            .grid-planos, .benefits-grid, .testimonial-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .card-plano.popular { transform: scale(1); }
+            .trust-icons { gap: 20px; }
+            .trust-icons img { height: 24px; }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">🚨 ATENÇÃO: ÚLTIMAS 07 VAGAS COM SUPORTE VIP PARA JANEIRO/2026</div>
+    <div class="top-bar">
+        🚨 VAGAS LIMITADAS - SISTEMA LIBERADO ATÉ: 
+        <span class="countdown" id="countdown">00:00:00</span>
+    </div>
 
-    <header>
-        <div class="container navbar">
-            <div class="logo" onclick="showPage('home')">DRIVE<span>MASTER</span></div>
-            <div style="font-weight: 700; color: var(--accent); font-size: 11px; letter-spacing: 1px;">CONSULTORIA PREMIUM</div>
+    <header id="header">
+        <div class="container">
+            <div class="logo">DRIVE<span>MASTER</span></div>
         </div>
     </header>
 
-    <div id="home" class="page-section">
-        <section class="hero">
-            <div class="container">
-                <h1>Habilitação sem estresse.<br><span>Tempo Recorde.</span></h1>
-                <p>Nossa equipe de especialistas cuida de toda a jornada para você. Do suporte técnico à emissão, garantimos um processo ágil e acompanhado.</p>
-                <button class="btn btn-primary" onclick="showPage('pacotes')">Quero Garantir Minha Vaga</button>
+    <section class="hero-capture">
+        <div class="capture-box">
+            <div class="hero-badge">✓ CONSULTORIA OFICIAL</div>
+            <h1 class="hero-title">Regularize sua CNH com Segurança Total</h1>
+            <p class="hero-subtitle">Consultoria técnica privada para processos administrativos, suspensão e emissão documental. Atendimento humanizado e resultados garantidos.</p>
+            
+            <div class="input-group">
+                <label>📄 CPF (Opcional - Para consulta prévia)</label>
+                <input type="text" id="leadCPF" class="capture-input" placeholder="000.000.000-00">
             </div>
-        </section>
+            <div class="input-group">
+                <label>📧 E-mail (Opcional - Para envio de contrato)</label>
+                <input type="email" id="leadEmail" class="capture-input" placeholder="seu@email.com">
+            </div>
 
-        <section class="section-padding container" style="text-align: center;">
-            <h2 style="font-family: 'Montserrat'; margin-bottom: 40px; color: var(--primary);">Por que escolher a DriveMaster?</h2>
-            <div class="grid">
-                <div class="card">
-                    <div style="font-size: 40px; margin-bottom: 20px;">🚀</div>
-                    <h3>Agilidade Real</h3>
-                    <p style="font-size: 14px; color: #666;">Otimizamos seu tempo com uma logística de agendamento inteligente.</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
-                    <h3>Segurança Total</h3>
-                    <p style="font-size: 14px; color: #666;">Processo amparado pelas diretrizes vigentes, garantindo tranquilidade.</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 40px; margin-bottom: 20px;">📱</div>
-                    <h3>Suporte 24h</h3>
-                    <p style="font-size: 14px; color: #666;">Um consultor dedicado no seu WhatsApp para tirar todas as dúvidas.</p>
-                </div>
+            <button class="btn-cta" onclick="rolarParaPlanos()">🔓 VERIFICAR DISPONIBILIDADE AGORA</button>
+            
+            <p style="font-size: 11px; color: #555; margin-top: 25px; line-height: 1.5;">
+                <span style="color: var(--success);">🔒</span> Seus dados estão 100% protegidos por criptografia de ponta a ponta.
+            </p>
+        </div>
+    </section>
+
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-icons">
+                <img src="https://logodownload.org/wp-content/uploads/2014/10/visa-logo-1.png" alt="Visa">
+                <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo.png" alt="Mastercard">
+                <img src="https://logodownload.org/wp-content/uploads/2015/05/pix-logo.png" alt="Pix">
             </div>
-        </section>
+            <p style="font-size: 11px; color: #444; margin-top: 15px; letter-spacing: 1px;">🔐 AMBIENTE 100% SEGURO E VERIFICADO</p>
+        </div>
     </div>
 
-    <div id="pacotes" class="page-section hidden">
-        <div class="container section-padding">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-family: 'Montserrat'; font-size: 32px; color: var(--primary);">Planos de Assessoria</h2>
-                <p style="color: #666; margin-top: 10px;">Escolha o nível de suporte que você precisa.</p>
+    <!-- SEÇÃO DE BENEFÍCIOS -->
+    <section class="benefits reveal">
+        <div class="container">
+            <h2 class="section-title">Por que escolher a <span>DriveMaster?</span></h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3 class="benefit-title">Agilidade Garantida</h3>
+                    <p class="benefit-desc">Processo otimizado com acompanhamento em tempo real. Sem burocracias desnecessárias.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛡️</span>
+                    <h3 class="benefit-title">Segurança Total</h3>
+                    <p class="benefit-desc">Seus dados protegidos com criptografia de nível bancário. Confidencialidade absoluta.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">👥</span>
+                    <h3 class="benefit-title">Suporte Humanizado</h3>
+                    <p class="benefit-desc">Equipe especializada disponível via WhatsApp para tirar todas as suas dúvidas.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">📋</span>
+                    <h3 class="benefit-title">100% Legal</h3>
+                    <p class="benefit-desc">Atuamos dentro de todos os parâmetros legais como consultoria administrativa.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">💳</span>
+                    <h3 class="benefit-title">Pagamento Flexível</h3>
+                    <p class="benefit-desc">Parcele em até 2x sem juros ou pague à vista com desconto especial via PIX.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">⭐</span>
+                    <h3 class="benefit-title">Satisfação Comprovada</h3>
+                    <p class="benefit-desc">Mais de 5.000 clientes atendidos com nota média de 4.9/5.0 estrelas.</p>
+                </div>
             </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>Plano Inicial</h3>
-                    <ul>
-                        <li>Suporte Teórico Digital</li>
-                        <li>Agendamento de Exames</li>
-                        <li>Consultoria Documental</li>
+        </div>
+    </section>
+
+    <section class="planos reveal" id="planos-section">
+        <div class="container">
+            <h2 class="section-title">Escolha a <span>Modalidade Ideal</span></h2>
+            
+            <div class="grid-planos">
+                <div class="card-plano">
+                    <h3>ESSENCIAL</h3>
+                    <div class="price"><span>R$ 699,00</span>R$ 499,97</div>
+                    <ul class="features-list">
+                        <li>Análise completa de prontuário</li>
+                        <li>Verificação de bloqueios ativos</li>
+                        <li>Guia Digital do Condutor</li>
+                        <li>Suporte via e-mail</li>
                     </ul>
-                    <button class="btn" style="background: #eee; width: 100%;" onclick="openPayment('pacote1')">Selecionar</button>
+                    <button class="btn-outline" onclick="abrirModal('Essencial', 499.97)">SOLICITAR VAGA</button>
                 </div>
-                
-                <div class="card featured">
-                    <h3>Premium VIP</h3>
-                    <ul>
-                        <li>Suporte Prático Intensivo</li>
-                        <li>Agendamento Prioritário</li>
-                        <li>Consultor Particular 24h</li>
-                        <li>Monitoramento de Emissão</li>
+
+                <div class="card-plano popular">
+                    <div class="badge-popular">⭐ MAIS VENDIDO</div>
+                    <h3>AGILIZADA</h3>
+                    <div class="price"><span>R$ 997,00</span>R$ 749,97</div>
+                    <ul class="features-list">
+                        <li>Suporte VIP Prioritário 24h</li>
+                        <li>Análise técnica avançada</li>
+                        <li>Acompanhamento via WhatsApp</li>
+                        <li>Proteção de dados sigilosos</li>
+                        <li>Relatório detalhado do processo</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="openPayment('pacote2')">Contratar Agora</button>
+                    <button class="btn-cta" style="margin-top: 0;" onclick="abrirModal('Agilizada', 749.97)">SOLICITAR VAGA</button>
                 </div>
-                
-                <div class="card">
-                    <h3>Plano Express</h3>
-                    <ul>
-                        <li>Foco Total em Agilidade</li>
-                        <li>Monitoramento Diário</li>
-                        <li>Suporte Pós-Emissão</li>
+
+                <div class="card-plano">
+                    <h3>PLATINUM</h3>
+                    <div class="price"><span>R$ 1.890,00</span>R$ 1.399,97</div>
+                    <ul class="features-list">
+                        <li>Emissão Imediata Consultoria</li>
+                        <li>Monitoramento 24h em tempo real</li>
+                        <li>Suporte Presidencial exclusivo</li>
+                        <li>Gestão total do processo</li>
+                        <li>Assessor pessoal dedicado</li>
                     </ul>
-                    <button class="btn" style="background: #eee; width: 100%;" onclick="openPayment('pacote3')">Selecionar</button>
+                    <button class="btn-outline" onclick="abrirModal('Platinum', 1399.97)">SOLICITAR VAGA</button>
+                </div>
+
+                <div class="card-plano familia">
+                    <h3>FAMÍLIA</h3>
+                    <div class="price"><small>Pacote Especial</small>R$ 2.000,00</div>
+                    <ul class="features-list">
+                        <li>Até 3 Condutores inclusos</li>
+                        <li>Assessoria Familiar Completa</li>
+                        <li>Prioridade Máxima no Sistema</li>
+                        <li>Desconto progressivo aplicado</li>
+                        <li>Economize até 40%</li>
+                    </ul>
+                    <button class="btn-outline" onclick="abrirModal('Família', 2000.00)">SOLICITAR PLANO</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="step-choice">
-                <h3 style="font-family: 'Montserrat';">Finalizar Adesão</h3>
-                <p style="margin: 20px 0; color: #666; font-size: 14px;">Escolha o método de pagamento seguro:</p>
-                <button class="btn" style="background: #27ae60; width: 100%; color: white; margin-bottom: 15px;" onclick="showPix()">Pagar com PIX (Imediato)</button>
-                <button class="btn" style="background: #eee; width: 100%; color: #333;" onclick="goToCard()">Cartão de Crédito</button>
+    <!-- SEÇÃO FAQ -->
+    <section class="faq-section reveal">
+        <div class="container">
+            <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>A DriveMaster é uma empresa legalizada?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Somos uma empresa de consultoria administrativa privada regularizada. Atuamos como despachantes e consultores técnicos dentro da total legalidade brasileira.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Quanto tempo demora o processo?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O prazo varia conforme a complexidade do caso e o plano escolhido. No plano Agilizada, a média é de 15 a 30 dias. No Platinum, podemos reduzir significativamente este tempo.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Posso parcelar o pagamento?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Oferecemos parcelamento em até 2x sem juros. Também aceitamos pagamento à vista via PIX com condições especiais.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Meus dados estão seguros?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutamente! Utilizamos criptografia de ponta a ponta e seguimos rigorosamente a LGPD (Lei Geral de Proteção de Dados). Seus dados são tratados com máxima confidencialidade.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Como funciona o suporte?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Dependendo do plano escolhido, você terá acesso a suporte via e-mail, WhatsApp prioritário ou até mesmo um assessor pessoal dedicado exclusivamente ao seu caso.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>O que está incluso no Plano Família?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        O Plano Família permite regularizar até 3 condutores simultaneamente com desconto progressivo, ideal para famílias que precisam resolver a situação de múltiplos motoristas.
+                    </div>
+                </div>
             </div>
-            <div id="step-pix" class="hidden">
-                <h3 style="color: var(--success);">Código PIX Gerado</h3>
-                <p style="font-size: 13px; margin: 10px 0;">Copie o código abaixo para pagar no seu banco:</p>
-                <img id="qr-image" src="" class="qr-code-img">
-                <div id="pix-code" class="copy-box">CARREGANDO...</div>
-                
-                <button class="btn" style="background: #3498db; color: white; width: 100%; margin-bottom: 15px;" onclick="copyPix()">📋 COPIAR CÓDIGO PIX</button>
-                
-                <p style="font-size: 11px; color: #888;">Após o pagamento, o suporte entrará em contato automaticamente.</p>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="closeModal()">Já realizei o pagamento</button>
+        </div>
+    </section>
+
+    <section class="testimonials reveal">
+        <div class="container">
+            <h2 class="section-title">Avaliações de <span>Clientes Reais</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Estava com a CNH bloqueada há meses e a DriveMaster resolveu tudo com muita agilidade. O atendimento no WhatsApp foi excelente e me mantiveram informado em cada etapa."</p>
+                    <span class="client-name">Carlos Eduardo - SP</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Contratei o plano Família para mim e meu esposo. A segurança que eles passam é incrível. Recomendo de olhos fechados para quem precisa regularizar a documentação."</p>
+                    <span class="client-name">Fernanda Lima - MG</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Profissionalismo total. O suporte me explicou cada etapa do processo e não precisei sair de casa para nada. Valeu cada centavo investido."</p>
+                    <span class="client-name">Roberto Alves - RJ</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Fiquei impressionada com a rapidez! Escolhi o plano Platinum e em menos de 20 dias estava tudo resolvido. Equipe muito atenciosa e competente."</p>
+                    <span class="client-name">Mariana Costa - BA</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Melhor investimento que fiz! Estava sem CNH há 2 anos e a DriveMaster conseguiu regularizar minha situação de forma totalmente transparente e legal."</p>
+                    <span class="client-name">Paulo Santos - RS</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Atendimento impecável desde o primeiro contato. Me senti segura durante todo o processo. Recomendo principalmente o plano Agilizada!"</p>
+                    <span class="client-name">Juliana Oliveira - PR</span>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div id="privacyModal" class="modal">
-        <div class="modal-content" style="text-align: left;">
-            <span class="close" onclick="closeLegal()">&times;</span>
-            <h3>Política de Privacidade</h3>
-            <p style="font-size: 13px; margin-top: 15px; line-height: 1.6;">A DriveMaster protege os seus dados. As informações recolhidas destinam-se exclusivamente à prestação de serviços de consultoria e suporte técnico, não sendo partilhadas com terceiros para fins publicitários.</p>
-        </div>
-    </div>
-
-    <div id="termsModal" class="modal">
-        <div class="modal-content" style="text-align: left;">
-            <span class="close" onclick="closeLegal()">&times;</span>
-            <h3>Termos de Uso</h3>
-            <p style="font-size: 13px; margin-top: 15px; line-height: 1.6;">1. A DriveMaster é uma assessoria privada independente.<br>2. Não possuímos vínculo com órgãos governamentais.<br>3. Os serviços referem-se a consultoria técnica e suporte logístico.</p>
-        </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
-            <div class="logo">DRIVE<span>MASTER</span></div>
-            <p style="margin: 15px 0; opacity: 0.7; font-size: 13px;">Consultoria líder em agilidade documental.</p>
-            <div class="footer-links">
-                <a onclick="openLegal('privacyModal')">Privacidade</a> | <a onclick="openLegal('termsModal')">Termos de Uso</a>
-            </div>
-            <p style="font-size: 10px; opacity: 0.4; margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                AVISO: A DriveMaster é uma empresa de consultoria privada. Não somos o DETRAN. Oferecemos suporte especializado para facilitar o seu processo de habilitação.
-            </p>
+            <div class="logo" style="font-size: 24px; margin-bottom: 20px;">DRIVE<span>MASTER</span></div>
+            <p class="footer-legal">A DriveMaster é uma empresa de consultoria administrativa privada. Não possuímos vínculo direto com órgãos governamentais (DETRAN/DENATRAN). Atuamos como despachantes e consultores técnicos dentro da legalidade brasileira, sempre em conformidade com a legislação vigente.</p>
+            
+            <img src="https://trustlock.co/wp-content/uploads/2019/01/guaranteed-safe-checkout-trust-badge.png" class="secure-badge" alt="Compra Segura">
+            
+            <p style="color: #444; font-size: 12px; margin-top: 30px;">© <span id="ano-copyright"></span> <span id="nome-empresa"></span>. Todos os direitos reservados.</p>
+            <p style="color: #333; font-size: 11px; margin-top: 10px;">CNPJ: <span id="cnpj-empresa"></span> | Razão Social: <span id="razao-social"></span></p>
         </div>
     </footer>
 
+    <!-- MODAL DE CHECKOUT -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="fecharModal()">&times;</span>
+            
+            <div id="step-1" class="step-content active">
+                <h3 class="modal-title">Como deseja prosseguir?</h3>
+                <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Você está a um passo de regularizar sua situação.</p>
+                
+                <button class="modal-btn-wpp" onclick="irParaWhatsApp()">
+                    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" style="margin-right:12px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    Falar com Suporte VIP
+                </button>
+                
+                <button class="modal-btn-buy" onclick="irParaPagamento()">
+                    💳 COMPRAR AGORA
+                </button>
+            </div>
+
+            <div id="step-2" class="step-content">
+                <h3 class="modal-title">Finalizar Compra</h3>
+                <p style="color:#aaa; font-size:14px; margin-bottom: 10px;">Selecione a forma de pagamento:</p>
+                
+                <select id="select-parcelas" class="select-parcela">
+                    <option value="1">💰 À vista - Pagamento Imediato</option>
+                    <option value="2">📅 Parcelar em 2x (Entrada + 30 dias)</option>
+                </select>
+
+                <button class="modal-btn-buy" onclick="gerarPix()">
+                    🔐 GERAR CÓDIGO PIX
+                </button>
+                <p style="font-size:11px; color:#666; margin-top:15px; cursor:pointer;" onclick="voltarPasso(1)">← Voltar</p>
+            </div>
+
+            <div id="step-3" class="step-content">
+                <h3 class="modal-title" style="color:var(--success);">✅ Aguardando Pagamento</h3>
+                <p style="color:#fff; font-size:15px; margin-bottom: 10px;">Copie o código abaixo e pague no app do seu banco:</p>
+                
+                <div class="pix-area" id="pix-code-display">
+                    CARREGANDO CÓDIGO...
+                </div>
+                
+                <button class="btn-copy" onclick="copiarPix()">📋 COPIAR CÓDIGO PIX</button>
+                
+                <p style="font-size:12px; color:#aaa; margin-top:25px; line-height: 1.6;">Após o pagamento, envie o comprovante no WhatsApp do suporte para <strong>liberação imediata</strong> do seu plano.</p>
+                
+                <button class="modal-btn-wpp" style="margin-top:20px; font-size:15px;" onclick="irParaWhatsApp()">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="margin-right:10px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    ENVIAR COMPROVANTE
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JIVO CHAT -->
+    <script src="//code.jivosite.com/widget/yszSv02nqp" async></script>
+
     <script>
-        const dadosPacotes = {
-            pacote1: { linkCard: "https://livaxshenaidervautar.herospark.co/remodelagem-completa-de-pagina", pixCode: "00020101021226830014BR.GOV.BCB.PIX2561qrcodespix.sejaefi.com.br/v2/b41340f290dc43b5a39be22ca00a6b635204000053039865802BR5905EFISA6008SAOPAULO62070503***63046BEF", qrImg: "https://i.ibb.co/1G9yB5x3/ym5-Wv9x4.png" },
-            pacote2: { linkCard: "https://livaxshenaidervautar.herospark.co/remodelagem-completa-de-pagina", pixCode: "00020101021226830014BR.GOV.BCB.PIX2561qrcodespix.sejaefi.com.br/v2/b41340f290dc43b5a39be22ca00a6b635204000053039865802BR5905EFISA6008SAOPAULO62070503***63046BEF", qrImg: "https://i.ibb.co/1G9yB5x3/ym5-Wv9x4.png" },
-            pacote3: { linkCard: "https://livaxshenaidervautar.herospark.co/remodelagem-completa-de-pagina", pixCode: "00020101021226830014BR.GOV.BCB.PIX2561qrcodespix.sejaefi.com.br/v2/b41340f290dc43b5a39be22ca00a6b635204000053039865802BR5905EFISA6008SAOPAULO62070503***63046BEF", qrImg: "https://i.ibb.co/1G9yB5x3/ym5-Wv9x4.png" }
-        };
+        // ============================================================
+        // 🔧 CONFIGURAÇÕES DO PROPRIETÁRIO - EDITE AQUI
+        // ============================================================
+        
+        // 📱 WHATSAPP
+        const WHATSAPP_SUPORTE = "5511933724343";
+        
+        // 💰 CHAVES PIX - PLANO ESSENCIAL
+        const PIX_ESSENCIAL_AVISTA = "COLE_AQUI_A_CHAVE_PIX_ESSENCIAL_AVISTA";
+        const PIX_ESSENCIAL_PARCELADO = "COLE_AQUI_A_CHAVE_PIX_ESSENCIAL_PARCELADO";
+        
+        // 💰 CHAVES PIX - PLANO AGILIZADA
+        const PIX_AGILIZADA_AVISTA = "COLE_AQUI_A_CHAVE_PIX_AGILIZADA_AVISTA";
+        const PIX_AGILIZADA_PARCELADO = "COLE_AQUI_A_CHAVE_PIX_AGILIZADA_PARCELADO";
+        
+        // 💰 CHAVES PIX - PLANO PLATINUM
+        const PIX_PLATINUM_AVISTA = "COLE_AQUI_A_CHAVE_PIX_PLATINUM_AVISTA";
+        const PIX_PLATINUM_PARCELADO = "COLE_AQUI_A_CHAVE_PIX_PLATINUM_PARCELADO";
+        
+        // 💰 CHAVES PIX - PLANO FAMÍLIA
+        const PIX_FAMILIA_AVISTA = "COLE_AQUI_A_CHAVE_PIX_FAMILIA_AVISTA";
+        const PIX_FAMILIA_PARCELADO = "COLE_AQUI_A_CHAVE_PIX_FAMILIA_PARCELADO";
+        
+        // 📊 INFORMAÇÕES DA EMPRESA
+        const NOME_EMPRESA = "DriveMaster Brasil";
+        const CNPJ_EMPRESA = "XX.XXX.XXX/XXXX-XX";
+        const RAZAO_SOCIAL = "DriveMaster Consultoria Ltda.";
+        const ANO_COPYRIGHT = "2026";
+        
+        // ============================================================
+        // FIM DAS CONFIGURAÇÕES - NÃO EDITE ABAIXO DESTA LINHA
+        // ============================================================
 
-        let selectedPkg = "";
+        let planoAtual = "";
+        let valorAtual = 0;
 
-        function showPage(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0,0);
+        // Contador de urgência (24 horas)
+        function iniciarContador() {
+            const dataFinal = new Date();
+            dataFinal.setHours(23, 59, 59, 999);
+            
+            const interval = setInterval(() => {
+                const agora = new Date();
+                const diff = dataFinal - agora;
+                
+                if (diff <= 0) {
+                    clearInterval(interval);
+                    document.getElementById('countdown').textContent = "ENCERRADO";
+                    return;
+                }
+                
+                const horas = Math.floor(diff / (1000 * 60 * 60));
+                const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdown').textContent = 
+                    `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+            }, 1000);
         }
 
-        function openPayment(pkg) {
-            selectedPkg = pkg;
-            document.getElementById('step-choice').classList.remove('hidden');
-            document.getElementById('step-pix').classList.add('hidden');
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-        function showPix() {
-            const data = dadosPacotes[selectedPkg];
-            document.getElementById('qr-image').src = data.qrImg;
-            document.getElementById('pix-code').innerText = data.pixCode;
-            document.getElementById('step-choice').classList.add('hidden');
-            document.getElementById('step-pix').classList.remove('hidden');
-        }
-
-        function copyPix() {
-            const code = document.getElementById('pix-code').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                alert("Código PIX copiado! Agora basta colar no seu banco.");
+        // Scroll reveal animation
+        function revelarElementos() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
             });
         }
 
-        function goToCard() { window.open(dadosPacotes[selectedPkg].linkCard, '_blank'); closeModal(); }
-        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
-        function openLegal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeLegal() { 
-            document.getElementById('privacyModal').style.display = 'none'; 
-            document.getElementById('termsModal').style.display = 'none'; 
+        window.addEventListener('scroll', revelarElementos);
+        window.addEventListener('load', () => {
+            iniciarContador();
+            revelarElementos();
+            carregarInformacoesEmpresa();
+        });
+        
+        // Carregar informações da empresa no footer
+        function carregarInformacoesEmpresa() {
+            document.getElementById('ano-copyright').textContent = ANO_COPYRIGHT;
+            document.getElementById('nome-empresa').textContent = NOME_EMPRESA;
+            document.getElementById('cnpj-empresa').textContent = CNPJ_EMPRESA;
+            document.getElementById('razao-social').textContent = RAZAO_SOCIAL;
         }
 
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') { closeModal(); closeLegal(); }
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Fecha todos os outros
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abre o clicado se não estava ativo
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
         }
+
+        function rolarParaPlanos() {
+            document.getElementById('planos-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Functions
+        function abrirModal(plano, valor) {
+            planoAtual = plano;
+            valorAtual = valor;
+            
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('step-1').classList.add('active');
+            
+            document.getElementById('checkoutModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function voltarPasso(passo) {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${passo}`).classList.add('active');
+        }
+
+        function irParaWhatsApp() {
+            const cpf = document.getElementById('leadCPF').value || "Não informado";
+            const email = document.getElementById('leadEmail').value || "Não informado";
+            
+            let mensagem = `Olá! Tenho interesse no plano *${planoAtual}* (R$ ${valorAtual.toFixed(2).replace('.', ',')}).\n\n📋 *MEUS DADOS*\nCPF: ${cpf}\nE-mail: ${email}\n\nPoderia me ajudar com mais informações?`;
+            
+            if(document.getElementById('step-3').classList.contains('active')) {
+                mensagem = `Olá! Acabei de realizar o pagamento do plano *${planoAtual}*.\n\nSegue meu comprovante em anexo.\n\nCPF: ${cpf}\nE-mail: ${email}`;
+            }
+
+            const textoCodificado = encodeURIComponent(mensagem);
+            const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_SUPORTE}&text=${textoCodificado}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function irParaPagamento() {
+            document.getElementById('step-1').classList.remove('active');
+            document.getElementById('step-2').classList.add('active');
+        }
+
+        function gerarPix() {
+            const parcelas = document.getElementById('select-parcelas').value;
+            let chavePix = "";
+            
+            // Seleciona a chave PIX correta baseado no plano e forma de pagamento
+            if (planoAtual === "Essencial") {
+                chavePix = parcelas === "1" ? PIX_ESSENCIAL_AVISTA : PIX_ESSENCIAL_PARCELADO;
+            } else if (planoAtual === "Agilizada") {
+                chavePix = parcelas === "1" ? PIX_AGILIZADA_AVISTA : PIX_AGILIZADA_PARCELADO;
+            } else if (planoAtual === "Platinum") {
+                chavePix = parcelas === "1" ? PIX_PLATINUM_AVISTA : PIX_PLATINUM_PARCELADO;
+            } else if (planoAtual === "Família") {
+                chavePix = parcelas === "1" ? PIX_FAMILIA_AVISTA : PIX_FAMILIA_PARCELADO;
+            }
+            
+            document.getElementById('step-2').classList.remove('active');
+            document.getElementById('step-3').classList.add('active');
+            
+            document.getElementById('pix-code-display').innerText = chavePix;
+        }
+
+        function copiarPix() {
+            const codigo = document.getElementById('pix-code-display').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                const btnCopy = event.target;
+                const textoOriginal = btnCopy.textContent;
+                btnCopy.textContent = '✓ COPIADO!';
+                btnCopy.style.background = 'var(--success)';
+                
+                setTimeout(() => {
+                    btnCopy.textContent = textoOriginal;
+                    btnCopy.style.background = 'var(--accent)';
+                }, 2000);
+            }).catch(err => {
+                alert("Erro ao copiar. Por favor, selecione e copie manualmente.");
+            });
+        }
+        
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('checkoutModal');
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+
+        // Prevenir zoom em inputs no mobile
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                if (window.innerWidth < 768) {
+                    this.style.fontSize = '16px';
+                }
+            });
+        });
     </script>
 </body>
-                    </html>
-    
+</html>
